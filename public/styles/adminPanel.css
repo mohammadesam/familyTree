@@ -1,0 +1,55 @@
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 35vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.card > img {
+    width: 90%;
+    height: 20vh;
+    margin-bottom: 10px;
+}
+
+.card > a {
+    
+    border: solid 2px #1DB1BA;
+    color: black;
+    padding: 7px 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.card > a:hover {
+    transition: all 0.4s;
+    border: 0;
+    background-image:  linear-gradient( 190deg, #1DB1BA,  #BCE794 99%);
+}
+
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 60%;
+    }
+    body {
+        height: 150vh;
+    }
+    section {
+        position: relative;
+        top: 25%;
+    }
+    .rightSide {
+        position: relative;
+    }
+    .leftSide {
+        position: relative;
+        height: 120vh;
+    }
+}

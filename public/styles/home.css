@@ -1,0 +1,206 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient( 190deg, #1DB1BA,  #BCE794 99%);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    align-self: start;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+}
+
+nav > ul {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul#secondPart {
+    justify-content: center;
+}
+
+ul#secondPart > li {
+    margin: 0 5px;
+}
+ a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    
+}
+
+nav > ul > li:hover {
+    transition: 0.4s;
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+#icon {
+    width: 20px;
+    height: 20px;
+}
+
+#login {
+    font-size: 1.2rem;
+    padding: 5px 12px;
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#register {
+    font-size: 1.2rem;
+    padding: 5px 12px;
+    background-color: transparent;
+    border: solid 2px white;
+    color: white;
+    border-radius: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+section {
+    width: 100%;
+    display: flex;
+    height: 85vh;
+   animation-name: animatein;
+   animation-duration: 1.5s;
+   animation-iteration-count: 1;
+}
+
+section > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.leftside > h1 {
+    color: white;
+    font-size: 3rem;
+}
+
+.leftside {
+    font-size: 1.1rem;
+    color: black;
+    
+}
+.leftside > * {
+    margin-top: 10px;
+}
+
+.rightside > img{
+    width: 85%;
+    height: 85%;
+}
+
+footer {
+    height: 7vh;
+    text-align: center;
+}
+
+#treeBtn {
+    padding: 10px 15px;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    transition: .4s;
+    margin-top: 30px;
+}
+
+#treeBtn > a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+
+#treeBtn:hover {
+    transform: scale(1.1);
+    background-color: rgb(243, 235, 235);
+}
+
+.phoneNav {
+    display: none;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+}
+
+.phonemenu > ul{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+}
+
+
+.phonemenu > ul > li {
+    align-self: center;
+    justify-self: center;
+    list-style: none;
+    font-size: 1.1rem;
+}
+
+@keyframes animatein {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    nav {
+        display: none;
+    }
+
+    .phoneNav {
+        display: block;
+    }
+
+    section {
+        height: 82vh;
+        flex-direction: column-reverse;
+        margin-bottom: 0;
+    }
+
+    footer {
+       display: none;
+    }
+
+    .leftside {
+        padding: 5px;
+        margin: 0 5px;
+    }
+    .leftside > h4 {
+        text-align: center;
+    }
+}

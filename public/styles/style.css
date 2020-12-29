@@ -1,0 +1,138 @@
+
+
+
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+body { background: #fff; }
+/* optional Container STYLES */
+.chart { height: 600px; margin: 5px; width: 900px; }
+.Treant > .node { padding: 3px; border: 1px solid #484848; border-radius: 3px; }
+.Treant > .node img { width: 100%; height: 100%; }
+
+.Treant .collapse-switch { width: 100%; height: 100%; border: none; }
+.Treant .node.collapsed { background-color: #DEF82D; }
+.Treant .node.collapsed .collapse-switch { background: none; }
+
+.hide {
+    display: none !important;
+}
+
+
+.node-style {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #fec;
+    border: 1px solid #000;
+    font-family: comic, sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.node > a.collapse-switch {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.nodeDel{
+   position: absolute;
+    align-self: start;
+    margin-bottom: 3px;
+    top: 0;
+    left: 2px;
+   width: 15px !important;
+   height: 15px !important;
+   cursor: pointer;
+}
+.node.admin-style {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #fec;
+    border: 1px solid #000;
+    font-family: comic, sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.admin-style > a.collapse-switch {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 20%;
+    height: 20%;
+    background-color: black;
+}
+
+.addRoot {
+    position: relative;
+    left: 50%;
+}
+
+.show {
+    display: block;
+}
+.details {
+    z-index: 10;
+    color: red;
+    position: absolute;
+    top: 5vh;
+    left: 12.5vw;
+    background-color: white;
+    width: 75%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+}
+
+.info {
+    position: absolute;
+    right: 0px;
+    bottom: -15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.shadow {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.close-details {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: black;
+    cursor: pointer;
+}
+
+img.editBtn {
+    position: relative;
+    cursor: pointer;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+div.addRoot {
+    width: 50px !important;
+}

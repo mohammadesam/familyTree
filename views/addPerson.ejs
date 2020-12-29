@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Person</title>
+    <link rel="stylesheet" href="/styles/admin.css">
+</head>
+<body>
+  
+    <div class="con">
+        
+       <form method="POST" action="/add/<%-dist%>?gender=<%-gender%>&&name=<%-name%> ">
+        <div>
+            <label for="name">  الاسم </label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <% if (gender == "male") { %>
+                <label for="parent">  الام </label>
+            <% } else {%>
+                <label for="parent"> الاب </label>
+            <% } %> 
+            
+            <% let validPartners = wifes.filter(wife => wife.length > 0).length %> 
+            <% if (wifes.length > 0 && validPartners) { %>
+                <select name="parent" id="parent">
+                    <% wifes.forEach(wife => { %>
+                        <option value="<%- wife %>"> <%- wife %> </option>
+                    <% }) %>
+                </select>
+            <% } else {%>
+                <input type="text" name="parent" id="parent">
+            <% } %> 
+        </div>
+        <div>
+            <label for="gender"> الجنس</label>
+            <select name="gender" id="gender">
+                <option value=""> الجنس </option>
+                <option value="female">انثى</option>
+                <option value="male"> ذكر </option>
+            </select>
+        </div>
+        
+        <div id="partnerContainer">
+            <label for="partner">  الزوج </label>
+            <input type="text" name="partner" id="partner">
+        </div>
+        <input type="submit" value="اضف الشخص">
+       </form>
+    </div>
+    <script src="/js/addPerson.js"></script>
+</body>
+</html>

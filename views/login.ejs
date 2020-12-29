@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% if(type == 'login') {
+        "Login"  
+    }
+     else {
+         "Register"
+    }  %> </title>
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+   <% if (type == "login") { %>
+    <form action="" method="POST">
+        <h1>Login</h1>
+        <h4 style="color: red;"><%- msg %> </h4>
+        <input type="text" name="name" placeholder="user Name">
+        <input type="password" name="password" placeholder="password">
+
+        <input type="submit" value="Sign In" id="submit">
+    </form>
+   <% } else { %>
+    <form action="" method="POST">
+        <span class="hide" id="user"><%- users  %> </span>
+        <h1>Register</h1>
+    
+        <input type="text" name="name" id="username" required placeholder="user Name">
+        <p id="validScreen"></p>
+        <input type="password" name="password1" required placeholder="password">
+        <input type="password" name="password2" required placeholder="confim password">
+        <select name="userType" id="">
+            <option value="admin">Admin</option>
+            <option value="user">Normal user</option>
+        </select>
+        <input type="submit" value="Create Account" id="submit">
+    </form>
+    <script src="/js/register.js"></script>
+
+    <% } %> 
+
+</body>
+</html>

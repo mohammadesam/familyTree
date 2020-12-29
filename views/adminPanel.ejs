@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin </title>
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/adminPanel.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <%- include("./partials/nav.ejs", {admin: true, name: name}) %>
+    <section>
+        <div class="leftside">
+          <div class="card">
+              <img src="/images/undraw_Add_user_re_5oib.svg" alt="">
+              <a href="/users/register"> add User </a>
+          </div>
+          <div class="card">
+            <img src="/images/undraw_browsing_urt9.svg" alt="">
+            <a href="/admin"> Edit Tree </a>
+        </div>
+        </div>
+        <div class="rightside">
+            <img src="/images/undraw_Tree_swing_646s.svg" alt="">
+        </div>
+    </section>
+</body>
+</html>
