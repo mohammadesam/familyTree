@@ -32,6 +32,10 @@ usersRoute.get("/register", authenticateToken, (req, res) => {
 });
 
 usersRoute.post("/login", async (req, res) => {
+  if (mongoose.connection.readyState != 1) {
+    res.redirect("/login");
+    return;
+  }
   User.find({ userName: req.body.name }, async (err, result) => {
     const user = result[0];
     const allowed = await bcrypt.compare(req.body.password, user.password);

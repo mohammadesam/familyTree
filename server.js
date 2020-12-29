@@ -3,12 +3,13 @@ const multer = require("multer");
 const upload = multer();
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const addPersonRoute = require("./routes/addPerson");
 const editPersonRoute = require("./routes/edit");
 const usersRoute = require("./routes/usersRoute");
 var cookieParser = require("cookie-parser");
-
+dotenv.config();
 mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -18,9 +19,11 @@ mongoose
   .catch((err) => console.log(err));
 
 const connection = mongoose.connection;
+let connected = false;
 
 connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
+  connected = true;
 });
 
 const data = require("./scripts/main.js");
@@ -38,7 +41,11 @@ app.use("/users", usersRoute);
 //!routes
 
 app.get("/", (req, res) => {
-  res.render("home");
+  if (!connected) {
+    res.render("home", { con: false });
+  } else {
+    res.render("home", { con: true });
+  }
 });
 app.get("/tree", (req, res) => {
   person.find({}, (err, people) => {
