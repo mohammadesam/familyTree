@@ -16,7 +16,8 @@ usersRoute.get("/", authenticateToken, (req, res) => {
 });
 
 usersRoute.get("/login", (req, res) => {
-  res.render("login", { type: "login", msg: req.query.msg || " " });
+  let msg = req.query.msg || " ";
+  res.render("login", { type: "login", msg });
 });
 
 usersRoute.get("/register", authenticateToken, (req, res) => {
