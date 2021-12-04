@@ -62,7 +62,8 @@ app.get("/", (req, res) => {
     isAuthenticated(req, res);
     let isLoggedIn = req.user ? true : false;
     console.log(req.user);
-    res.render("home", { con: true, isLoggedIn, name: req.user?.name || " " });
+    let name = isLoggedIn ? req.user.name : "";
+    res.render("home", { con: true, isLoggedIn, name });
   }
 });
 app.get("/tree", (req, res) => {
