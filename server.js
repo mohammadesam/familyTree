@@ -58,9 +58,7 @@ function isAuthenticated(req, res, next) {
 }
 //!routes import
 app.get("/", (req, res) => {
-  if (!connected) {
-    res.render("home", { con: false });
-  } else {
+  if (connected) {
     isAuthenticated(req, res);
     let isLoggedIn = req.user ? true : false;
     console.log(req.user);
