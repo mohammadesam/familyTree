@@ -245,7 +245,7 @@ div.addRoot {
   position: absolute;
   top: 5px;
   left: 8px;
-  z-index: 100;
+  z-index: 10;
 }
 
 .backBtn > a {
