@@ -10,6 +10,7 @@ editPersonRoute.get("/:id", (req, res) => {
       if (err) console.log(err);
       console.log(fatherInfo);
       res.render("edit", {
+        id: req.params.id,
         name: person.name,
         partner: person.partner,
         gender: person.gender,
@@ -19,6 +20,37 @@ editPersonRoute.get("/:id", (req, res) => {
       });
     });
   });
+});
+
+editPersonRoute.post("/:id", async (req, res) => {
+  let person = await Person.findById(req.params.id);
+  const partner = [];
+
+  for (let i = 1; i < 30; i++) {
+    if (req.body[`partner${i}`]) {
+      if (
+        req.body[`partner${i}`] == "" ||
+        req.body[`partner${i}`] == undefined
+      ) {
+        continue;
+      }
+      partner.push(req.body[`partner${i}`]);
+    } else {
+      break;
+    }
+  }
+
+  person.name = req.body.name;
+  person.partner = partner;
+  person.gender = req.body.gender;
+
+  person
+    .save()
+    .then(() => {
+      console.log("person edited");
+      res.redirect("/admin");
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = editPersonRoute;

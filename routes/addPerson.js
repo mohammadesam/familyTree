@@ -54,14 +54,10 @@ addPersonRoute.post("/:id", (req, res) => {
   let father = req.query.gender == "male" ? req.query.name : req.query.parent;
   let mother = req.query.gender == "female" ? req.query.name : req.body.parent;
   let partner = [];
-  for (let i = 1; i <= 4; i++) {
-    if (req.body.gender == "female") {
-      partner.push(req.body.partner);
-    } else {
-      let wife = req.body["partner" + i];
-      console.log(wife);
-      wife == " " || wife == "" ? null : partner.push(wife);
-    }
+  for (let i = 1; i <= 30; i++) {
+    const key = "partner" + i;
+    if (req.body[key] != undefined) partner.push(req.body[key]);
+    else break;
   }
   let person = new Person({
     _id: mongoose.Types.ObjectId(),

@@ -112,11 +112,11 @@ function validteInputs(req, res, next) {
 
 function generateAccessToken(user, req, res, newUser) {
   let token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: 86400,
+    expiresIn: 86400000,
   });
   let cookie = req.cookies.jwtToken;
   if (!cookie || newUser || cookie != token) {
-    res.cookie("jwtToken", token, { maxAge: 900000, httpOnly: true });
+    res.cookie("jwtToken", token, { maxAge: 86400000, httpOnly: true });
     return token;
   } else {
     console.log("samm...");

@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Person</title>
-    <link rel="stylesheet" href="/styles/admin.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/styles/admin.css" />
+  </head>
+  <body>
     <div class="con">
-        
-       <form method="POST" action="/add/<%-5%>?gender=<%-gender%>&&name=<%-name%> ">
+      <form
+        method="POST"
+        action="/admin/edit/<%-id-%>?gender=<%-gender%>&&name=<%-name%> "
+      >
         <div>
-            <label for="name">  الاسم </label>
-            <input type="text" name="name" id="name" value="<%- name %> ">
+          <label for="name"> الاسم </label>
+          <input type="text" name="name" id="name" value="<%- name %> " />
         </div>
         <div>
-            <% if (gender == "male") { %>
-                <label for="parent">  الام </label>
-            <% } else {%>
-                <label for="parent"> الاب </label>
-            <% } %> 
-            
-                <% let otherParent = father.name == mother? Father: mother %> 
-                <input type="text" name="parent" value="<%- otherParent %> " id="parent">
-           
+          <% if (gender == "male") { %>
+          <label for="parent"> الام </label>
+          <% } else {%>
+          <label for="parent"> الاب </label>
+          <% } %> <% let otherParent = father.name == mother? Father: mother %>
+          <input
+            type="text"
+            name="parent"
+            value="<%- otherParent %> "
+            id="parent"
+          />
         </div>
         <div>
-            <label for="gender"> الجنس</label>
-            <select name="gender" id="gender" value="<% gender %> ">
-                <option value=""> الجنس </option>
-                <option value="female">انثى</option>
-                <option value="male"> ذكر </option>
-            </select>
+          <label for="gender"> الجنس</label>
+          <select name="gender" id="gender" value="<%- gender -%>">
+            <option value="female">انثى</option>
+            <option value="male">ذكر</option>
+          </select>
         </div>
-        
-        <% if (gender == "male") { %>
-            <% for(let i = 1; i<=4; i++)  { %>
-                <div>
-                    <label for="partner"> الزوجة <%- i %></label>
-                    <input type="text" name="partner<%- i %>" value="<%- partner[i -1] %> " id="partner">
-                </div>
-            <% } %>
-        <% } else { %>
-            <div id="partnerContainer">
-                <label for="partner">  الزوج </label>
-                <input type="text" name="partner" value="<%- partner[0] %> "  id="partner">
-            </div>
-            <% } %> 
-        <input type="submit" value="اضف الشخص">
-       </form>
+
+        <div>
+          <label for="addPartner"> اضف شريك </label>
+          <div name="addPartner" id="addPartnerBtn">+</div>
+        </div>
+        <div id="partnerContainer">
+          <% for(let i = 1; i <= partner.length; i++) { %>
+          <div>
+            <label for="partner">
+              <%- gender === "male"? "الزوجة" + i : "الزوج" + i %></label
+            >
+            <input
+              type="text"
+              name="partner<%- i %>"
+              value="<%- partner[i -1] %> "
+              id="partner"
+            />
+            <button onclick="deleteElement(event)">حذف</button>
+          </div>
+          <% } %>
+        </div>
+        <input type="submit" value="اضف الشخص" />
+      </form>
     </div>
     <script src="/js/addPerson.js"></script>
-</body>
+  </body>
 </html>

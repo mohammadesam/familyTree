@@ -1,27 +1,35 @@
 <nav>
-    <ul>
-        <li><a href="/"><img src="/images/tree.svg" alt="" id="icon"></a></li>
-        <li><a href="/users/">Account</a></li>
-        <li><a href="/tree"> Tree </a></li>
-        <li><a href="/about">About</a></li>
-    </ul>
-    <ul id="secondPart">
-        <% if (!admin) { %>
-            <li><a href="/users/login" id="login">Login</a></li>
-            <li><a href="/users/register" id="register">Register</a></li>
-            <% } else {%>
-            <li><img src="/images/user.svg" width="25"  height="25" alt="" srcset=""> <%- name %> </li> 
-            <% } %>
-    </ul>
+  <ul>
+    <li>
+      <a href="/"><img src="/images/tree.svg" alt="" id="icon" /></a>
+    </li>
+    <li><a href="/users/">Account</a></li>
+    <li><a href="/tree"> Tree </a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <ul id="secondPart">
+    <% console.log(isLoggedIn) %> <% if (!isLoggedIn) { %>
+    <li><a href="/users/login" id="login">Login</a></li>
+    <li><a href="/users/register" id="register">Register</a></li>
+    <% } else {%>
+    <li>
+      <img src="/images/user.svg" width="25" height="25" alt="user" srcset="" />
+      <%- name %>
+    </li>
+    <% } %>
+  </ul>
 </nav>
 
-<div class="phoneNav"> 
-    <div class="phonemenu">
-        <ul>
-            <li><img src="/images/user.svg" width="20" height="20" alt="" srcset=""> <%- name %> </li> 
-            <li><a href="/users">Account</a></li>
-            <li><a href="/tree"> Tree </a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </div>
+<div class="phoneNav">
+  <div class="phonemenu">
+    <ul>
+      <li>
+        <img src="/images/user.svg" width="20" height="20" alt="" srcset="" />
+        <%- name %>
+      </li>
+      <li><a href="/users">Account</a></li>
+      <li><a href="/tree"> Tree </a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
 </div>

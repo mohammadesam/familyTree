@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family Tree</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/treant-js-master/Treant.css">
-    <link rel="stylesheet" href="/treant-js-master/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/treant-js-master/Treant.css" />
+    <link
+      rel="stylesheet"
+      href="/treant-js-master/vendor/perfect-scrollbar/perfect-scrollbar.css"
+    />
 
     <!-- scripts -->
     <script src="/treant-js-master/Treant.js"></script>
@@ -17,18 +20,16 @@
     <script src="/treant-js-master/vendor/jquery.mousewheel.js"></script>
     <script src="/treant-js-master/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/js/color.js" defer></script>
-
-</head>
-<body>
-
+  </head>
+  <body>
+    <div class="backBtn"><a href="/">رجوع</a></div>
     <p id="data" class="hide"><%-data%></p>
-    <p id="objData" class="hide"><%- dataObject %> </p>
+    <p id="objData" class="hide"><%- dataObject %></p>
 
     <div class="details hide">
-        <span class="close-details">X</span>
-        <div class="dataElem"></div>
+      <span class="close-details">X</span>
+      <div class="dataElem"></div>
     </div>
-    <div id="family-tree"></div>       
-
-</body>
+    <div id="family-tree"></div>
+  </body>
 </html>

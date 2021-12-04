@@ -24,11 +24,11 @@ class Person {
           //   target: "_self",
           // },
           name: node.name,
-          contact: {
-            val: "ADD Child",
-            href: "/add/" + node.id,
-            target: "_self",
-          },
+          // contact: {
+          //   val: "ADD Child",
+          //   href: "/add/" + node.id,
+          //   target: "_self",
+          // },
         },
         HTMLid: node.id,
         children: [],

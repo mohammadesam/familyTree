@@ -9,13 +9,15 @@ const addPersonRoute = require("./routes/addPerson");
 const editPersonRoute = require("./routes/edit");
 const usersRoute = require("./routes/usersRoute");
 var cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+
 dotenv.config();
 mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("hiii"))
+  .then(() => console.log("db connected"))
   .catch((err) => console.log(err));
 
 const connection = mongoose.connection;
@@ -35,30 +37,48 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(upload.array());
 app.use(cookieParser());
+
+// routes import
 app.use("/add", addPersonRoute);
 app.use("/admin/edit", editPersonRoute);
 app.use("/users", usersRoute);
-//!routes
 
+// authenticateToken
+function isAuthenticated(req, res, next) {
+  // Gather the jwt access token from the request header
+  const token = req.cookies["jwtToken"];
+
+  if (token == null) return false; // if there isn't any token
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return false;
+    req.user = user;
+    return true; // pass the execution off to whatever request the client intended
+  });
+}
+//!routes import
 app.get("/", (req, res) => {
   if (!connected) {
     res.render("home", { con: false });
   } else {
-    res.render("home", { con: true });
+    isAuthenticated(req, res);
+    let isLoggedIn = req.user ? true : false;
+    console.log(req.user);
+    res.render("home", { con: true, isLoggedIn, name: req.user.name });
   }
 });
 app.get("/tree", (req, res) => {
   person.find({}, (err, people) => {
     if (err) return err;
-    let arr = {};
+    let obj = {};
     let mydata = [];
     people.forEach((one) => {
-      arr[one._id] = one;
+      obj[one._id] = one;
       mydata.push(one);
     });
     res.render("index", {
       data: JSON.stringify(data.getJson(mydata)),
-      dataObject: JSON.stringify(arr),
+      dataObject: JSON.stringify(obj),
     });
   });
 });
@@ -111,5 +131,8 @@ app.get("/admin/delete/:id", (req, res) => {
   }
 });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
 const port = process.env.PORT || 3000;
 app.listen(port);

@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family Tree</title>
-    <link rel="stylesheet" href="/styles/home.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-</head>
-<body>
-
-
-    <%- include("./partials/nav.ejs", {admin: false, name: " "}) %> 
-   
-
-
+    <link rel="stylesheet" href="/styles/home.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs", {isLoggedIn: isLoggedIn, name: name}) %>
+    <% console.log("home " + isLoggedIn) %>
     <section>
-        <div class="leftside">
-            <h1>شجرة العائلة</h1>
-            <h4> Lorem ipsum dolor sit amet, consectetur  </h4>
-            <p>Lorem ipsum dolor sit amet.</p>
-            
-            <button id="treeBtn"><a href="/users">تصفح الشجرة</a></button>
-        </div>
-        <div class="rightside">
-            <img src="/images/tree-of-dots-foliage.svg" alt="">
-        </div>
+      <div class="leftside">
+        <h1>شجرة العائلة</h1>
+        <h4>Lorem ipsum dolor sit amet, consectetur</h4>
+        <p>Lorem ipsum dolor sit amet.</p>
+
+        <button id="treeBtn"><a href="/users">تصفح الشجرة</a></button>
+      </div>
+      <div class="rightside">
+        <img src="/images/tree-of-dots-foliage.svg" alt="" />
+      </div>
     </section>
 
     <footer>
-        <p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+      <p>
+        Icons made by
+        <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+          >Freepik</a
+        >
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com</a
+        >
+      </p>
     </footer>
-
-    
-</body>
+  </body>
 </html>
