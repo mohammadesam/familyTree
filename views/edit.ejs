@@ -16,6 +16,7 @@
           <label for="name"> الاسم </label>
           <input type="text" name="name" id="name" value="<%- name %> " />
         </div>
+        <% if (father) { %>
         <div>
           <% if (gender == "male") { %>
           <label for="parent"> الام </label>
@@ -25,10 +26,20 @@
           <input
             type="text"
             name="parent"
-            value="<%- otherParent %> "
+            value="<%- otherParent -%> "
             id="parent"
           />
         </div>
+        <% } else { %>
+        <div>
+          <label for="parent"> other parent </label>
+          <input type="text" name="parent" id="parent" />
+        </div>
+        <div>
+          <label for="parent"> الاب </label>
+          <input type="text" name="parent" id="parent" />
+        </div>
+        <%} %>
         <div>
           <label for="gender"> الجنس</label>
           <select name="gender" id="gender" value="<%- gender -%>">

@@ -20,7 +20,7 @@ usersRoute.get("/login", (req, res) => {
   res.render("login", { type: "login", msg });
 });
 
-usersRoute.get("/register", authenticateToken, (req, res) => {
+usersRoute.get("/register", (req, res) => {
   User.find({}, (err, users) => {
     let usersArr = [];
     for (let user of users) {
@@ -55,37 +55,42 @@ usersRoute.post("/login", async (req, res) => {
   });
 });
 
-usersRoute.post("/register", validteInputs, async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password1, 10);
-    User.create(
-      {
-        _id: mongoose.Types.ObjectId(),
-        userName: req.body.name,
-        password: hashedPassword,
-        role: req.body.userType,
-      },
-      (err, user) => {
-        if (err)
-          return res
-            .status(500)
-            .send("There was a problem registering the user.");
-        // create a token
+usersRoute.post(
+  "/register",
+  authenticateToken,
+  validteInputs,
+  async (req, res) => {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password1, 10);
+      User.create(
+        {
+          _id: mongoose.Types.ObjectId(),
+          userName: req.body.name,
+          password: hashedPassword,
+          role: req.body.userType,
+        },
+        (err, user) => {
+          if (err)
+            return res
+              .status(500)
+              .send("There was a problem registering the user.");
+          // create a token
 
-        let token = generateAccessToken(
-          { id: user._id, role: user.role, name: user.userName },
-          req,
-          res,
-          true
-        );
+          let token = generateAccessToken(
+            { id: user._id, role: user.role, name: user.userName },
+            req,
+            res,
+            true
+          );
 
-        res.status(200).render("home");
-      }
-    );
-  } catch {
-    res.send("some thing went Wrong");
+          res.status(200).redirect("/");
+        }
+      );
+    } catch {
+      res.send("some thing went Wrong");
+    }
   }
-});
+);
 
 function authenticateToken(req, res, next) {
   // Gather the jwt access token from the request header
