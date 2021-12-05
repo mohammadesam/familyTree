@@ -67,6 +67,7 @@ app.get("/tree", (req, res) => {
       obj[one._id] = one;
       mydata.push(one);
     });
+    console.log(people);
     res.render("index", {
       data: JSON.stringify(data.getJson(mydata)),
       dataObject: JSON.stringify(obj),
