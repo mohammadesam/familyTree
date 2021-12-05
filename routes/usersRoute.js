@@ -36,8 +36,9 @@ usersRoute.post("/login", async (req, res) => {
     res.redirect("/login");
     return;
   }
-  console.log(req.body);
+
   User.find({ userName: req.body.name }, async (err, result) => {
+    console.log(result);
     const user = result[0];
     const allowed = await bcrypt.compare(req.body.password, user.password);
 
