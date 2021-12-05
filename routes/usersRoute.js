@@ -20,7 +20,7 @@ usersRoute.get("/login", (req, res) => {
   res.render("login", { type: "login", msg });
 });
 
-usersRoute.get("/register", (req, res) => {
+usersRoute.get("/register", authenticateToken, (req, res) => {
   User.find({}, (err, users) => {
     let usersArr = [];
     for (let user of users) {
