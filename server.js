@@ -16,17 +16,11 @@ mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("db connected"))
   .catch((err) => console.log(err));
-
-const connection = mongoose.connection;
-let connected = false;
-
-connection.once("open", function () {
-  console.log("MongoDB database connection established successfully");
-  connected = true;
-});
 
 const data = require("./scripts/main.js");
 const person = require("./models/person");
@@ -58,13 +52,11 @@ function isAuthenticated(req, res, next) {
 }
 //!routes import
 app.get("/", (req, res) => {
-  if (connected) {
-    isAuthenticated(req, res);
-    let isLoggedIn = req.user ? true : false;
-    console.log(req.user);
-    let name = isLoggedIn ? req.user.name : "";
-    res.render("home", { con: true, isLoggedIn, name });
-  }
+  isAuthenticated(req, res);
+  let isLoggedIn = req.user ? true : false;
+  console.log(req.user);
+  let name = isLoggedIn ? req.user.name : "";
+  res.render("home", { con: true, isLoggedIn, name });
 });
 app.get("/tree", (req, res) => {
   person.find({}, (err, people) => {
